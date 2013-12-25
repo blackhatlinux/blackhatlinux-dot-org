@@ -1,5 +1,5 @@
 name: Blackhat Linux
 markdown: redcarpet
 pygments: true
-paginate: 7
+paginate: 5
 paginate_path: "blog/page:num"

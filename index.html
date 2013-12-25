@@ -13,7 +13,7 @@ title: Blackhat Linux
   <div id="blog">
     <article>
 
-      {% for post in site.posts %}
+      {% for post in paginator.posts %}
         {% if post.new %}
           <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
           <h3 class="date">{{ post.date | date_to_string }}</h3>
@@ -26,40 +26,31 @@ title: Blackhat Linux
 
     </article>
     
-    
-    <div id="post-pagination" class="pagination">
-      <br />
-      {% if paginator.previous_page %}
-        {% if paginator.previous_page == 1 %}
-          <a href="/">Previous</a>
+    {% if paginator.total_pages > 1 %}
+      <div class="pagination" id="post-pagination">
+        {% if paginator.previous_page %}
+          <a href="{{ paginator.previous_page_path }}">&laquo; Prev</a>
         {% else %}
-          <a href="{{ paginator.previous_page_path }}">Previous</a>
+          <span>&laquo; Prev</span>
         {% endif %}
-      {% else %}
-         <span>Previous</span>
-      {% endif %}
 
-      {% if paginator.page == 1 %}
-        <span class="current-page">1</span>
-      {% else %}
-        <a href="/">1</a>
-      {% endif %}
+        {% for page in (1..paginator.total_pages) %}
+          {% if page == paginator.page %}
+            <em>{{ page }}</em>
+          {% elsif page == 1 %}
+            <a href="{{ '/' }}">{{ page }}</a>
+          {% else %}
+            <a href="{{ site.paginate_path }}">{{ page }}</a>
+          {% endif %}
+        {% endfor %}
 
-      {% for count in (2..paginator.total_pages) %}
-        {% if count == paginator.page %}
-          <span class="current-page">{{ count }}</span>
+        {% if paginator.next_page %}
+          <a href="{{ paginator.next_page_path }}">Next &raquo;</a>
         {% else %}
-          <a href="/page{{ count }}">{{ count }}</a>
+          <span>Next &raquo;</span>
         {% endif %}
-      {% endfor %}
-
-      {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path }}">Next</a>
-      {% else %}
-        <span>Next</span>
-      {% endif %}
-
-    </div>
+      </div>
+    {% endif %}
 
   </div>
   

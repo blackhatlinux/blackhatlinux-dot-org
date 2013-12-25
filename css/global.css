@@ -84,6 +84,7 @@ div#nav {
 
   #nav div.title {
     display: inline-block;
+    width: 50%;
     height: 44px;
     padding: 8px 18px 0px;
     font-family: montserrat;
@@ -105,7 +106,7 @@ div#nav {
   }
   
   #nav ul li a {
-    display: block;
+    display: inline-block;
     height: 44px;
     padding: 12px 18px 0;
     font-size: 14px;
