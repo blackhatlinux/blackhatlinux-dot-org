@@ -1,3 +1,14 @@
+div#logodistrorow {
+  text-align: center;
+}
+
+div#logodistro {
+  display: inline-block;
+  width: 100px;
+  height: 35px;
+  margin: 5px;
+}
+
 div#heading {
   margin: 42px auto 60px;
   z-index: -1;
